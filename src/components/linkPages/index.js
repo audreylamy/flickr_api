@@ -1,7 +1,5 @@
 import React from "react"
 import { withRouter } from 'react-router'
-import { Link, Redirect } from 'react-router-dom'
-import ListImg from '../listImg'
 import styled from 'styled-components'
 import { WithPhotosHoc } from "../../hoc/photosHOC"
 

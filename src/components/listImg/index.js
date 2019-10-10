@@ -6,18 +6,25 @@ import { withRouter } from 'react-router'
 const ListImg = ({ context, history }) => {
 
 	const [allPhotos, setAllPhotos] = React.useState([])
+	const [mount, setMount] = React.useState(false)
 
 	React.useEffect(() => {
+		console.log('here')
 		console.log(context)
-		setAllImages()
-	  },[]);
+		if (!mount) {
+			setAllImages()
+			setMount(true)
+		}
+	  });
 
 	const setAllImages = async () => {
 		var url;
 		console.log(context.tag)
-		if (history.location.pathname === "/")
+		if (history.location.pathname === "/" && context.tag === 'all')
 			url = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=ff9cea982e01046ebef0e6040d1f9b05&tags=all&format=json&nojsoncallback=true'
-		else 
+		else if (history.location.pathname !== "/")
+			url = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=ff9cea982e01046ebef0e6040d1f9b05&tags=' + context.tag + '&format=json&nojsoncallback=true'
+		else
 			url = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=ff9cea982e01046ebef0e6040d1f9b05&tags=' + context.tag + '&format=json&nojsoncallback=true'
 		await fetch(url)
 		.then(response => response.json())
