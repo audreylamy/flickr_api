@@ -21,5 +21,6 @@ npm start
 
 ## Technology stack
 
-+ Front-end: ReactJS, React router 
-+ Other: Sstyled-components
++ Front-end: ReactJS, React Router 
++ Other: Styled-components
++ Api: Flickr
