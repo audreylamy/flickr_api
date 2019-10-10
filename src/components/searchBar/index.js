@@ -12,8 +12,10 @@ const SearchBar = ({context, history}) => {
     }
 
     const handleClick = (ev) => {
-        context.setTag(input)
-        history.push('/');
+        if (input.length > 0) {
+            context.setTag(input)
+            history.push('/');
+        }       
     }
 
     return (

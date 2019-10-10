@@ -2,6 +2,7 @@ import React from "react"
 import {WrapperImg, Img} from "./style"
 import { WithPhotosHoc } from "../../hoc/photosHOC"
 import { withRouter } from 'react-router'
+import { WrapperText } from "../linkPages/style";
 
 const ListImg = ({ context, history }) => {
 
@@ -26,13 +27,20 @@ const ListImg = ({ context, history }) => {
 
 		if (allPhotos.length > 0) {
 			return (
-				<WrapperImg>
-					{
-						allPhotos.map((photo, i) => {
-							return <Img key={i} src={'https://farm' + photo.farm + '.staticflickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '_m.jpg'} alt="Logo"></Img>;
-						})
-					}
-				</WrapperImg>
+				<React.Fragment>
+					<WrapperText>
+						{
+							context.tag != "all" ? context.tag + " gifs" : null
+						}
+					</WrapperText>
+					<WrapperImg>
+						{
+							allPhotos.map((photo, i) => {
+								return <Img key={i} src={'https://farm' + photo.farm + '.staticflickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '_m.jpg'} alt="Logo"></Img>;
+							})
+						}
+					</WrapperImg>
+				</React.Fragment>
 			)
 		} else {
 			return (
