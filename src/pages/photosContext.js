@@ -8,7 +8,7 @@ export default class PhotosProvider extends Component {
 		super();
 		this.state = { 
 			setTag: this.setTag.bind(this),
-			tag: "all"
+			tag: "all",
 		};
 	}
 

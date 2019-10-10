@@ -7,14 +7,12 @@ import PhotosProvider   from  "./photosContext"
 const App = () => {
   return (
     <Router>
-      <div>
+      <Switch>
         <PhotosProvider>
           <Route exact path="/" component={Homepage} />
-          <Route path="/dog"component={Homepage} />
-          <Route path="/cat" component={Homepage} />
-          <Route path="/bird" component={Homepage} />
+          <Route path="/:tag"component={Homepage} />
         </PhotosProvider>
-      </div>
+      </Switch>
     </Router>
   );
 }
