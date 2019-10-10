@@ -1,18 +1,19 @@
 import React            from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Homepage         from "./Homepage"
-import Dog              from "../components/dog"
-import Cat              from "../components/cat"
-import Bird             from "../components/bird"
+import ListImg          from "../components/listImg"
+import PhotosProvider   from  "./photosContext"
 
 const App = () => {
   return (
     <Router>
       <div>
-        <Route exact path="/" component={Homepage} />
-        <Route path="/dog"component={Homepage} />
-        <Route path="/cat" component={Homepage} />
-        <Route path="/bird" component={Homepage} />
+        <PhotosProvider>
+          <Route exact path="/" component={Homepage} />
+          <Route path="/dog"component={ListImg} />
+          <Route path="/cat" component={ListImg} />
+          <Route path="/bird" component={ListImg} />
+        </PhotosProvider>
       </div>
     </Router>
   );
