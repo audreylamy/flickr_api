@@ -10,6 +10,12 @@ export const Button = styled.button`
 	background-color: #41B3A3;
 	opacity: .7;
 	outline: none;
+
+	&:hover {
+		background-color: palevioletred;
+		color: white;
+		transition: all .6s ease-out;
+	}
 `
 
 export const WrapperText = styled.p`

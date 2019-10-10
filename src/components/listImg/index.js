@@ -1,5 +1,6 @@
 import React from "react"
-import {WrapperImg, Img} from "./style"
+import { WrapperImg } from "./style"
+import Images from "../images/index"
 import { WithPhotosHoc } from "../../hoc/photosHOC"
 import { withRouter } from 'react-router'
 import { WrapperText } from "../linkPages/style";
@@ -30,13 +31,15 @@ const ListImg = ({ context, history }) => {
 				<React.Fragment>
 					<WrapperText>
 						{
-							context.tag != "all" ? context.tag + " gifs" : null
+							context.tag !== "all" ? context.tag + " gifs" : null
 						}
 					</WrapperText>
 					<WrapperImg>
 						{
 							allPhotos.map((photo, i) => {
-								return <Img key={i} src={'https://farm' + photo.farm + '.staticflickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '_m.jpg'} alt="Logo"></Img>;
+								return (
+									<Images key={i} photo={photo}/>
+								)	
 							})
 						}
 					</WrapperImg>
