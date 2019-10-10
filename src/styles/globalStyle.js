@@ -17,8 +17,8 @@ const GlobalStyles = createGlobalStyle`
     
     body {
         margin: 0;
-        font-family: "Helvetica Neue", sans-serif;
-    }
+        font-family: "Optima", sans-serif;
+        background-color: #C38D9E
 
 `
 

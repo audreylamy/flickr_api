@@ -1,7 +1,8 @@
 import React  from "react"
-import {} from "./style"
+import { WrapperSearchBar, Search, Button, WrapperText } from "./style"
+import { WithPhotosHoc } from "../../hoc/photosHOC"
 
-const SearchBar = () => {
+const SearchBar = ({context: { setTag }}) => {
 
 	const [input, setInput] = React.useState("")
 
@@ -10,16 +11,18 @@ const SearchBar = () => {
     }
 
     const handleClick = async (ev) => {
-        ev.preventDefault()
+        console.log(input)
+        setTag(input)
+        
     }
 
     return (
-        <div>
-           <input type="text" name="name" value={input} onChange={ev => handleChange(ev)}></input>
-           <button onClick={ev => handleClick(ev)}>Valid</button>
-        </div>
+        <WrapperSearchBar>
+           <Search type="text" name="name" value={input} onChange={ev => handleChange(ev)}></Search>
+           <Button onClick={ev => handleClick(ev)}><WrapperText>Valid</WrapperText></Button>
+        </WrapperSearchBar>
     )
 
 }
 
-export default SearchBar
+export default WithPhotosHoc(SearchBar)

@@ -1,19 +1,24 @@
 import React from "react"
 import {WrapperImg, Img} from "./style"
 import { WithPhotosHoc } from "../../hoc/photosHOC"
+import { withRouter } from 'react-router'
 
-const ListImg = ({ context }) => {
+const ListImg = ({ context, history }) => {
 
 	const [allPhotos, setAllPhotos] = React.useState([])
 
 	React.useEffect(() => {
+		console.log(context)
 		setAllImages()
 	  },[]);
 
 	const setAllImages = async () => {
-		console.log("context", context)
+		var url;
 		console.log(context.tag)
-		const url = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=57f198356d2cef9345235fe1865b7da2&tags=' + context.tag + '&format=json&nojsoncallback=true'
+		if (history.location.pathname === "/")
+			url = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=ff9cea982e01046ebef0e6040d1f9b05&tags=all&format=json&nojsoncallback=true'
+		else 
+			url = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=ff9cea982e01046ebef0e6040d1f9b05&tags=' + context.tag + '&format=json&nojsoncallback=true'
 		await fetch(url)
 		.then(response => response.json())
 		.then(data => setAllPhotos(data.photos.photo));
@@ -37,4 +42,4 @@ const ListImg = ({ context }) => {
 }
 
 
-export default WithPhotosHoc(ListImg)
+export default withRouter(WithPhotosHoc(ListImg))

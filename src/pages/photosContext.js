@@ -13,11 +13,12 @@ export default class PhotosProvider extends Component {
 	}
 
 	setTag(data) {
+		console.log(data)
 		this.setState({ tag: data })
 	}
 
 	render() {
-
+		console.log(this.state)
 		return (
 			<PhotosContext.Provider value={{...this.state}}>
 				{this.props.children}

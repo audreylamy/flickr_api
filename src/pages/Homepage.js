@@ -3,6 +3,7 @@ import ListImg  from "../components/listImg"
 import SearchBar from '../components/searchBar';
 import OtherPages from '../components/linkPages';
 import styled from 'styled-components';
+import GlobalStyles from '../styles/globalStyle';
 
 
 export const WrapperContainer = styled.div`
@@ -15,11 +16,14 @@ class Homepage extends React.Component {
 
 	render() {
 		return (
-			<WrapperContainer>
+			<React.Fragment>
+				<GlobalStyles />
+				<WrapperContainer>
 					<SearchBar />
 					<OtherPages />
 					<ListImg />
-			</WrapperContainer>
+				</WrapperContainer>
+			</React.Fragment>
 		);
 	}
 	
