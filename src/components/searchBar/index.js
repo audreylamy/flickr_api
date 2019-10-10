@@ -1,7 +1,6 @@
 import React  from "react"
 import { WrapperSearchBar, Search, Button, WrapperText } from "./style"
 import { WithPhotosHoc } from "../../hoc/photosHOC"
-import { withRouter } from 'react-router'
 
 const SearchBar = ({context, history}) => {
 
@@ -14,7 +13,6 @@ const SearchBar = ({context, history}) => {
     const handleClick = (ev) => {
         console.log(input)
         context.setTag(input)
-        history.push('/');
     }
 
     return (
@@ -26,4 +24,4 @@ const SearchBar = ({context, history}) => {
 
 }
 
-export default withRouter(WithPhotosHoc(SearchBar))
+export default WithPhotosHoc(SearchBar)
