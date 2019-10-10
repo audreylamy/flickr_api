@@ -3,11 +3,12 @@ import styled from 'styled-components';
 export const WrapperImg = styled.div`
 	display: flex;
 	flex-wrap: wrap;
-	width: 75%;
+	width: 80%;
 `
 
 export const Img = styled.img`
 	margin: 5px;
-	max-width: 50%;
-	
+	width: 23%;
+	height: 200px;
+	object-fit: cover; 
 `
