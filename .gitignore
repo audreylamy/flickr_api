@@ -1,7 +1,7 @@
 # Mac files
 .DS_Store
 
-# dotenv environment variables file
+# API_KEY
 .env
 
 # Dependency directories
