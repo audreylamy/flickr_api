@@ -15,8 +15,8 @@ npm install
 3/ Create .env (API KEY)
 ```
 You can ask for your own API KEY here : 
-https://identity.flickr.com/login?redir=%2Fservices%2Fapps%2Fcreate%2Fapply
 ```
+https://identity.flickr.com/login?redir=%2Fservices%2Fapps%2Fcreate%2Fapply
 
 4/ Launch app
 ```
