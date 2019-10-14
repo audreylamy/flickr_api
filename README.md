@@ -12,7 +12,12 @@ https://github.com/audreylamy/flickr_api.git
 npm install
 ```
 
-3/ Launch app
+3/ Create .env with your own API KEY
+```
+You can find your API KEY here : https://identity.flickr.com/login?redir=%2Fservices%2Fapps%2Fcreate%2Fapply
+```
+
+4/ Launch app
 ```
 npm start
 ```
