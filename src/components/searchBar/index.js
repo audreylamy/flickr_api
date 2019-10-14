@@ -1,4 +1,5 @@
 import React  from "react"
+import PropTypes from 'prop-types';
 import { WrapperSearchBar, Search, Button, WrapperText } from "./style"
 import { WithPhotosHoc } from "../../hoc/photosHOC"
 import { withRouter } from 'react-router'
@@ -24,7 +25,10 @@ const SearchBar = ({context, history}) => {
            <Button onClick={ev => handleClick(ev)}><WrapperText>Valid</WrapperText></Button>
         </WrapperSearchBar>
     )
-
 }
+
+SearchBar.propTypes = {
+	context: PropTypes.object
+};
 
 export default withRouter(WithPhotosHoc(SearchBar))

@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react"
+import PropTypes from 'prop-types';
 import { WrapperImg } from "./style"
 import Images from "../images/index"
 import { WithPhotosHoc } from "../../hoc/photosHOC"
@@ -10,19 +11,16 @@ const API_KEY = process.env.REACT_APP_API_KEY
 const ListImg = ({ context, history }) => {
 
 	const [allPhotos, setAllPhotos] = useState([])
-	const [tagI, setTag] = useState(null)
 	const [loader, setLoader] = useState(true)
 
 	useEffect(() => {
-			if (history.location.pathname.toLowerCase() === "/cat" || "/dog" || "/bird") {
-				let path = history.location.pathname.split('/')
-				setAllImages(path[1].toLowerCase())
-			}
-	  }, [context.tag]);
+		if (history.location.pathname.toLowerCase() === "/cat" || "/dog" || "/bird") {
+			let path = history.location.pathname.split('/')
+			updateAllImages(path[1].toLowerCase())
+		}
+	  }, [context.tag]); // Only re-run the effect if context.tag changes
 
-	const setAllImages = async (tag) => {
-		console.log(tag)
-		setTag(tag)
+	const updateAllImages = async (tag) => {
 		var url;
 		if (history.location.pathname === "/" && context.tag === 'all')
 			url = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=' + API_KEY + '&tags=all&format=json&nojsoncallback=true'
@@ -30,7 +28,6 @@ const ListImg = ({ context, history }) => {
 			url = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=' + API_KEY + '&tags=' + tag + '&format=json&nojsoncallback=true'
 		else
 			url = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=' + API_KEY + '&tags=' + context.tag + '&format=json&nojsoncallback=true'
-		console.log(url)
 		await fetch(url)
 		.then(response => response.json())
 		.then(data => {setAllPhotos(data.photos.photo); setLoader(false)})
@@ -38,8 +35,6 @@ const ListImg = ({ context, history }) => {
 	}
 
 		if (allPhotos.length > 0) {
-			console.log(allPhotos)
-			console.log(tagI.length)
 			return (
 				<React.Fragment>
 					<WrapperText>
@@ -71,5 +66,8 @@ const ListImg = ({ context, history }) => {
 		}
 }
 
+ListImg.propTypes = {
+	context: PropTypes.object
+};
 
 export default withRouter(WithPhotosHoc(ListImg))

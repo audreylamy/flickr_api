@@ -1,4 +1,5 @@
 import React from "react"
+import PropTypes from 'prop-types';
 import { withRouter } from 'react-router'
 import { WrapperButton, Button, WrapperText } from "./style"
 import { WithPhotosHoc } from "../../hoc/photosHOC"
@@ -19,5 +20,9 @@ const LinkPages = ({context: { setTag }, history}) => {
 		</WrapperButton>
 	)
 }
+
+LinkPages.propTypes = {
+	setTag: PropTypes.func
+};
 
 export default withRouter(WithPhotosHoc(LinkPages))
