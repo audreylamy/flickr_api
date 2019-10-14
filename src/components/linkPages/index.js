@@ -14,9 +14,9 @@ const LinkPages = ({context: { setTag }, history}) => {
 
 	return (
 		<WrapperButton>
-			<Button onClick={ev => sendTag(ev, "cat")}><WrapperText>Cats</WrapperText></Button>
-			<Button onClick={ev => sendTag(ev, "dog")}><WrapperText>Dogs</WrapperText></Button>
-			<Button onClick={ev => sendTag(ev, "bird")}><WrapperText>Birds</WrapperText></Button>
+			<Button onClick={ev => sendTag(ev, "cats")}><WrapperText>Cats</WrapperText></Button>
+			<Button onClick={ev => sendTag(ev, "dogs")}><WrapperText>Dogs</WrapperText></Button>
+			<Button onClick={ev => sendTag(ev, "birds")}><WrapperText>Birds</WrapperText></Button>
 		</WrapperButton>
 	)
 }

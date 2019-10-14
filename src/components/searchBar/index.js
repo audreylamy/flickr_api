@@ -21,7 +21,7 @@ const SearchBar = ({context, history}) => {
 
     return (
         <WrapperSearchBar>
-           <Search type="text" name="name" value={input} onChange={ev => handleChange(ev)}></Search>
+           <Search type="text" name="name" value={input} onChange={ev => handleChange(ev)} placeholder="Search"></Search>
            <Button onClick={ev => handleClick(ev)}><WrapperText>Valid</WrapperText></Button>
         </WrapperSearchBar>
     )

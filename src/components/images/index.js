@@ -1,10 +1,10 @@
-import React from "react"
+import React, { useState } from "react"
 import PropTypes from 'prop-types';
 import { Img } from "./style"
 
 const Images = ({photo}) => {
 
-	const [mouseEnter, setMouseEnter] = React.useState(false)
+	const [mouseEnter, setMouseEnter] = useState(false)
 
 	return (
 		<Img 
