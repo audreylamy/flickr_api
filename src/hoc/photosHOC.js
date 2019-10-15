@@ -1,5 +1,5 @@
 import React        		from "react";
-import { PhotosContext } 	from '../pages/photosContext';
+import { PhotosContext } 	from '../context/tagsContext';
 
 export const WithPhotosHoc = (Component) => {
     return(

@@ -1,7 +1,7 @@
 import React            from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Homepage         from "./Homepage"
-import PhotosProvider   from  "./photosContext"
+import PhotosProvider   from  "../context/tagsContext"
 
 const App = () => {
   return (
