@@ -17,23 +17,23 @@ const ListImg = ({ context, history }) => {
 	useEffect(() => {
 		setAllPhotos([])
 		setLoader(true)
-		if (history.location.pathname.toLowerCase() === "/cats" || "/dogs" || "/birds") {
-			let path = history.location.pathname.split('/')
-			const updateAllImages = async (tag) => {
-				var url;
-				if (history.location.pathname === "/" && context.tag === 'all')
-					url = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=' + API_KEY + '&tags=all&format=json&nojsoncallback=true'
-				else if (history.location.pathname !== "/" && tag)
-					url = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=' + API_KEY + '&tags=' + tag + '&format=json&nojsoncallback=true'
-				else
-					url = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=' + API_KEY + '&tags=' + context.tag + '&format=json&nojsoncallback=true'
-				await fetch(url)
-				.then(response => response.json())
-				.then(data => {setAllPhotos(data.photos.photo); setLoader(false)})
-				.catch(error => console.log(error))
-			}
-			updateAllImages(path[1].toLowerCase())
+		
+		let path = history.location.pathname.split('/')
+		const updateAllImages = async (tag) => {
+			var url;
+			if (history.location.pathname === "/" && context.tag === 'all')
+				url = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=' + API_KEY + '&tags=all&format=json&nojsoncallback=true'
+			else if (history.location.pathname !== "/" && tag)
+				url = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=' + API_KEY + '&tags=' + tag + '&format=json&nojsoncallback=true'
+			else
+				url = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=' + API_KEY + '&tags=' + context.tag + '&format=json&nojsoncallback=true'
+			await fetch(url)
+			.then(response => response.json())
+			.then(data => {setAllPhotos(data.photos.photo); setLoader(false)})
+			.catch(error => console.log(error))
 		}
+		updateAllImages(path[1].toLowerCase())
+		
 	  }, [context.tag, history]); // Only re-run the effect if context.tag changes
 
 		if (allPhotos.length > 0) {
